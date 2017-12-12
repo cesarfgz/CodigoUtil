@@ -17,8 +17,7 @@ public class AddParameterDynConf extends AbstractTransformation {
 	private DynamicConfiguration DynConfig;
 	Logger logger;
 
-	public void transform(TransformationInput arg0, TransformationOutput arg1)
-			throws StreamTransformationException {
+	public void transform(TransformationInput arg0, TransformationOutput arg1) throws StreamTransformationException {
 
 		try {
 			logger = Logger.getLogger(AddParameterDynConf.class.getName());
@@ -29,11 +28,11 @@ public class AddParameterDynConf extends AbstractTransformation {
 
 			// Create Dyn Config Key for Path
 			DynConfig = arg0.getDynamicConfiguration(); // get theDynamicConfiguration
-			DynamicConfigurationKey dunsOrigenKey = DynamicConfigurationKey.create("http://sap.com/xi/XI/System/File", "dunsOrigen");
+			DynamicConfigurationKey dunsOrigenKey = DynamicConfigurationKey.create("http://sap.com/xi/XI/System/File",
+					"dunsOrigen");
 			DynConfig.put(dunsOrigenKey, dunsOrigen);
 
-			execute(arg0.getInputPayload().getInputStream(), arg1
-					.getOutputPayload().getOutputStream());
+			execute(arg0.getInputPayload().getInputStream(), arg1.getOutputPayload().getOutputStream());
 			logger.severe("END MAPPING");
 
 		} catch (StreamTransformationException e) {
